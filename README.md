@@ -14,3 +14,10 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+## Screenshots:
+
+![Question Screen](https://github.com/alaa-shahin/quiz/blob/master/quiz%20app%20screenshots/1.png "Question Screen") 
+![Question Screen](https://github.com/alaa-shahin/quiz/blob/master/quiz%20app%20screenshots/2.png "Question Screen") 
+![Question Screen](https://github.com/alaa-shahin/quiz/blob/master/quiz%20app%20screenshots/3.png "Question Screen") 
+![Quiz Result](https://github.com/alaa-shahin/quiz/blob/master/quiz%20app%20screenshots/4.png "Quiz Result") 
