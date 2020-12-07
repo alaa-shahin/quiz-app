@@ -12,11 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.pinkAccent,
         appBar: AppBar(
           title: Text("Quiz"),
-          backgroundColor: Colors.pink,
+          backgroundColor: Colors.blue,
         ),
         body: HomePage(),
       ),
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
     Question(text: "android studio is not IDE ?", answer: false),
     Question(text: "flutter is Framework ?", answer: true),
     Question(text: "xamarin is Framework ?", answer: true),
-  ];
+  ]..shuffle();
   int currentQuestion = 0;
   int score = 0;
   int correctCounter = 0;
@@ -97,104 +98,107 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: <Widget>[
-        Expanded(
-          flex: 4,
-          child: Text(
-            questions[currentQuestion].text,
-            style: TextStyle(fontSize: 25, color: Colors.white),
-          ),
-        ),
-        SizedBox(
-          height: 40,
-        ),
-        Expanded(
-          flex: 1,
-          child: ButtonTheme(
-            minWidth: 200,
-            buttonColor: Colors.white,
-            child: RaisedButton(
-              onPressed: () {
-                nextQuestion(true, context);
-              },
-              child: Text(
-                "True",
-                style: TextStyle(fontSize: 40, color: Colors.blue),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  40,
-                ),
-              ),
+    return Container(
+      padding: EdgeInsets.all(10),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          Expanded(
+            flex: 4,
+            child: Text(
+              questions[currentQuestion].text,
+              style: TextStyle(fontSize: 25, color: Colors.white),
             ),
           ),
-        ),
-        SizedBox(
-          height: 30,
-        ),
-        Expanded(
-          flex: 1,
-          child: ButtonTheme(
-            minWidth: 200,
-            buttonColor: Colors.white,
-            child: RaisedButton(
-              onPressed: () {
-                nextQuestion(false, context);
-              },
-              child: Text(
-                "false",
-                style: TextStyle(fontSize: 40, color: Colors.blue),
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(
-                  40,
+          // SizedBox(
+          //   height: 30,
+          // ),
+          Expanded(
+            flex: 1,
+            child: ButtonTheme(
+              minWidth: 200,
+              buttonColor: Colors.white,
+              child: RaisedButton(
+                onPressed: () {
+                  nextQuestion(true, context);
+                },
+                child: Text(
+                  "True",
+                  style: TextStyle(fontSize: 40, color: Colors.blue),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    40,
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        SizedBox(
-          height: 50,
-        ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Column(
-              children: <Widget>[
-                Text(
-                  "Correct",
-                  style: TextStyle(fontSize: 30, color: Colors.white),
+          SizedBox(
+            height: 30,
+          ),
+          Expanded(
+            flex: 1,
+            child: ButtonTheme(
+              minWidth: 200,
+              buttonColor: Colors.white,
+              child: RaisedButton(
+                onPressed: () {
+                  nextQuestion(false, context);
+                },
+                child: Text(
+                  "false",
+                  style: TextStyle(fontSize: 40, color: Colors.blue),
                 ),
-                Text(
-                  correctCounter.toString(),
-                  style: TextStyle(fontSize: 30, color: Colors.white),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(
+                    40,
+                  ),
                 ),
-              ],
+              ),
             ),
-            SizedBox(
-              height: 30,
-            ),
-            Column(
-              children: <Widget>[
-                Text(
-                  "wrong",
-                  style: TextStyle(fontSize: 30, color: Colors.white),
-                ),
-                Text(
-                  wrongCounter.toString(),
-                  style: TextStyle(fontSize: 30, color: Colors.white),
-                ),
-                SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
+          ),
+          SizedBox(
+            height: 100,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    "Correct",
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                  Text(
+                    correctCounter.toString(),
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Column(
+                children: <Widget>[
+                  Text(
+                    "wrong",
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                  Text(
+                    wrongCounter.toString(),
+                    style: TextStyle(fontSize: 30, color: Colors.white),
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
